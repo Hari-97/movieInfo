@@ -8,7 +8,7 @@ var data;
 var error_status;
 var internet_err;
 
-const omdb_url = "http://www.omdbapi.com/?apikey=64407bbe&t=";
+const omdb_url = "https://www.omdbapi.com/?apikey=64407bbe&t=";
 
 function updatelogin(){
     loggedIn = localStorage['loggedIn'];
