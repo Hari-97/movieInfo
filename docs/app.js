@@ -97,14 +97,7 @@ async function api_call(title){
     data = await response.json();
     console.log(data)
     var mov_object = JSON.parse(localStorage.getItem("moviesTable"))
-    try{
-        mov_object[data.Title]=data
-    }
-    catch(err){
-        localStorage.setItem("moviesTable","{}")
-        api_call(title)
-    }
-    
+    mov_object[data.Title]=data
     localStorage.setItem("moviesTable",JSON.stringify(mov_object))
     //getting image
     const img_resp = await fetch(data.Poster);
@@ -696,11 +689,18 @@ function init(){
     document.getElementById("frgtpwd").style.display="none"
     
 }
+function createMoviesTable(){
+    var loc_obj = localStorage.getItem("asmdfaksgjbklg")
+    if(loc_obj===null){
+        localStorage.setItem("moviesTable","{}")
+    }
+}
 
 init()
 updatelogin()
 updateWatchlist()
 addWatchListtemp()
+createMoviesTable()
 //updateID()
 //console.log(localStorage.getItem("divArray"))
 //api_call('96');
