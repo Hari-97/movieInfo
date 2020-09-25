@@ -97,7 +97,14 @@ async function api_call(title){
     data = await response.json();
     console.log(data)
     var mov_object = JSON.parse(localStorage.getItem("moviesTable"))
-    mov_object[data.Title]=data
+    try{
+        mov_object[data.Title]=data
+    }
+    catch(err){
+        localStorage.setItem("moviesTable","{}")
+        api_call(title)
+    }
+    
     localStorage.setItem("moviesTable",JSON.stringify(mov_object))
     //getting image
     const img_resp = await fetch(data.Poster);
